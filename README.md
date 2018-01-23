@@ -1,4 +1,5 @@
 # CRDT
+[![Build Status](https://travis-ci.org/cdolan/crdt.svg?branch=master)](https://travis-ci.org/cdolan/crdt)
 
 C++11 header-only [CRDT](https://hal.inria.fr/inria-00555588/document) library.
 
