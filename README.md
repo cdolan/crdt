@@ -9,15 +9,15 @@ This library is under active development and **NOT PRODUCTION READY**.
 ## G-Counter
 
 ```c++
-auto a = crdt::GCounter<std::string, int>("a");
-a.increment();
+auto a = crdt::GCounter<std::string, int>("a");    // initializes counter to 0
+a.increment();                                     // increment by 1
 
-auto b = crdt::GCounter<std::string, int>("b", 3);
-b.increment();
+auto b = crdt::GCounter<std::string, int>("b", 3); // initializes counter to 3
+b.increment(5);                                    // increment by 5
 
-auto c = a.merge("c", b);
+auto c = a.merge("c", b);                          // join counters a and b
 
-std::cout << c.value(); // prints 5
+std::cout << c.value();                            // prints 9
 ```
 
 ## Contributing
