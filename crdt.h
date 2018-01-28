@@ -25,6 +25,7 @@
 
 #include <algorithm>
 #include <numeric>
+#include <type_traits>
 #include <unordered_map>
 
 namespace crdt {
@@ -35,7 +36,12 @@ class GCounter {
   static_assert(std::is_integral<T>::value, "type T must be integral type");
 
   GCounter(Key id) : GCounter(id, 0) {}
-  GCounter(Key id, T value) : id_(id) { counter_[id] = value; }
+  GCounter(Key id, T value) : id_(id) {
+    if (std::is_signed<T>::value)
+      throw std::range_error("type T must be unsigned type");
+
+    counter_[id] = value;
+  }
 
   Key id() const noexcept { return id_; }
 
