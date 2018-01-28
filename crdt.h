@@ -29,7 +29,7 @@
 
 namespace crdt {
 
-template <class Key, class T, class Map = std::unordered_map<Key, T>>
+template <class Key, class T>
 class GCounter {
  public:
   static_assert(std::is_integral<T>::value, "type T must be integral type");
@@ -83,7 +83,7 @@ class GCounter {
 
  private:
   Key id_;
-  Map counter_;
+  std::unordered_map<Key, T> counter_;
 };
 
 }  // namespace crdt
